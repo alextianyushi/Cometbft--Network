@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  abci0:
+    container_name: abci0
+    build:
+      context: ./kvstore
+      dockerfile: Dockerfile
+    image: abci
+    ports:
+      - "26658:26658"
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.6
+
   node0:
     container_name: node0
     image: "cometbft/localnode"
@@ -12,6 +24,7 @@ services:
       - LOG=${LOG:-cometbft.log}
     volumes:
       - ./build:/cometbft:Z
+    command: node --proxy_app=tcp://abci0:26658
     networks:
       localnet:
         ipv4_address: 192.167.10.2

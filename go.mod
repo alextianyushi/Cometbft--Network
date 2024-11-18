@@ -53,7 +53,7 @@ require (
 	golang.org/x/text v0.18.0
 	gonum.org/v1/gonum v0.15.1
 	google.golang.org/grpc v1.66.0
-	google.golang.org/protobuf v1.34.2
+	google.golang.org/protobuf v1.35.2
 )
 
 require (
